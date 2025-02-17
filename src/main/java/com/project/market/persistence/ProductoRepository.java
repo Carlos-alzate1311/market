@@ -2,10 +2,12 @@ package com.project.market.persistence;
 
 import com.project.market.persistence.crud.ProductoCrudRepository;
 import com.project.market.persistence.entity.Producto;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class ProductoRepository {
 
     private ProductoCrudRepository productoCrudRepository;
@@ -15,13 +17,23 @@ public class ProductoRepository {
     }
 
     public List<Producto> getByCategoria(int idCategoria) {
-        return productoCrudRepository.findByIdCategoriaOrdenByNombreAsc(idCategoria);
+        return productoCrudRepository.findByIdCategoriaOrderByNombreAsc(idCategoria);
     }
 
     public Optional<List<Producto>> getEscasos(int cantidad) {
-        return productoCrudRepository.finByCantidadStockLessThanAndEstado(cantidad,true);
+        return productoCrudRepository.findByCantidadStockLessThanAndEstado(cantidad,true);
     }
 
+    public Optional<Producto> getProducto(int idproducto) {
+        return productoCrudRepository.findById(idproducto);
+    }
 
+public Producto save(Producto producto) {
+        return productoCrudRepository.save(producto);
+}
+
+public void delete(int idproducto) {
+        productoCrudRepository.deleteById(idproducto);
+}
 }
 
