@@ -45,9 +45,14 @@ public class ProductoRepository implements ProductRepository {
         return productoCrudRepository.findById(productId).map(producto -> mapper.toProduct(producto));
     }
 
+
+
     @Override
     public Product save(Product product) {
         Producto producto = mapper.toProducto(product);
+        if (producto.getIdProducto() == 0) {
+            producto.setIdProducto(null);
+        }
         return mapper.toProduct(productoCrudRepository.save(producto));
     }
 
