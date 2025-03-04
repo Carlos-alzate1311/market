@@ -1,6 +1,4 @@
-package com.project.market.domain.service;
-
-import jakarta.persistence.Column;
+package com.project.market.domain;
 
 import java.time.LocalDateTime;
 import java.util.List;

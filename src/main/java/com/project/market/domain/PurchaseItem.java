@@ -1,4 +1,4 @@
-package com.project.market.domain.service;
+package com.project.market.domain;
 
 public class PurchaseItem {
     private int productId;
